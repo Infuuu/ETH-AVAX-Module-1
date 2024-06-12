@@ -1,10 +1,8 @@
-# AgeChecker Contract Readme
+# Admission Contract Readme
 
- **AgeChecker.sol** - A Simple Solidity Contract for Error Handling
+ **Admission.sol** - A Simple Solidity Contract for Error Handling
 
 This Solidity contract serves as a learning tool for beginners. It demonstrates how to handle errors using assert, revert, and require statements, which are essential mechanisms in Solidity programming.
-
-Certainly! Here's a section for your README.md file that provides an overview of your `AgeChecker` contract:
 
 ---
 
@@ -67,52 +65,67 @@ Certainly! Here's a section for your README.md file that describes the functiona
 
 ---
 
+Sure! Here is a section for your README.md file that describes the functionality of each function in your `Admission` contract:
+
+---
+
 ## Contract Functionality
 
-The `AgeChecker` contract includes three functions that each perform an age verification check using different error handling methods: `require`, `revert`, and `assert`.
+The `Admission` contract includes three functions, each designed to check a student's eligibility for admission to different universities based on their math and science marks. Each function demonstrates a different approach to error handling in Solidity: `require`, `revert`, and `assert`.
 
 ### Functions
 
-1. **checkAgeRequire**
+1. **uniA**
 
     ```solidity
-    function checkAgeRequire(uint _age) public pure returns (bool) {
-        require(_age > 18, "Age must be greater than 18");
-        return true;
+    function uniA(uint mathMarks, uint scienceMarks) public pure returns (string memory) {
+        require(mathMarks > 80 && scienceMarks > 90, "You are not eligible for admission in our University");
+        return "You are eligible to take admission";
     }
     ```
 
-    - **Purpose**: Checks if the provided age is greater than 18 using the `require` statement.
-    - **Behavior**: If the age is not greater than 18, the transaction is reverted with an error message "Age must be greater than 18".
-    - **Return**: Returns `true` if the age check passes.
+    - **Purpose**: Checks if the student's math marks are greater than 80 and science marks are greater than 90 for eligibility at University A.
+    - **Error Handling**: Uses the `require` statement to enforce the criteria. If the condition fails, the transaction is reverted with an error message "You are not eligible for admission in our University".
+    - **Return**: Returns "You are eligible to take admission" if the eligibility criteria are met.
 
-2. **checkAgeRevert**
+2. **uniB**
 
     ```solidity
-    function checkAgeRevert(uint _age) public pure returns (bool) {
-        if (_age <= 18) {
-            revert("Age is not greater than 18");
+    function uniB(uint mathMarks, uint scienceMarks) public pure returns (string memory) {
+        if (mathMarks > 60 && scienceMarks > 60) {
+            revert("You are not eligible for admission in our University");
         }
-        return true;
+        return "You are eligible to take admission";
     }
     ```
 
-    - **Purpose**: Checks if the provided age is greater than 18 using the `revert` statement.
-    - **Behavior**: If the age is not greater than 18, the transaction is explicitly reverted with an error message "Age is not greater than 18".
-    - **Return**: Returns `true` if the age check passes.
+    - **Purpose**: Checks if the student's math marks and science marks are both greater than 60 for eligibility at University B.
+    - **Error Handling**: Uses the `revert` statement to handle the condition. If both marks are greater than 60, the transaction is reverted with an error message "You are not eligible for admission in our University".
+    - **Return**: Returns "You are eligible to take admission" if the eligibility criteria (math marks and science marks not both greater than 60) are met.
 
-3. **checkAgeAssert**
+3. **uniC**
 
     ```solidity
-    function checkAgeAssert(uint _age) public pure returns (bool) {
-        assert(_age > 18);
-        return true;
+    function uniC(uint mathMarks, uint scienceMarks) public pure returns (string memory) {
+        assert(mathMarks > 95 && scienceMarks > 95);
+        return "You are eligible to take admission";
     }
     ```
 
-    - **Purpose**: Checks if the provided age is greater than 18 using the `assert` statement.
-    - **Behavior**: If the age is not greater than 18, the transaction is reverted, and all remaining gas is consumed.
-    - **Return**: Returns `true` if the age check passes.
+    - **Purpose**: Checks if the student's math marks are greater than 95 and science marks are greater than 95 for eligibility at University C.
+    - **Error Handling**: Uses the `assert` statement to enforce the criteria. If the condition fails, the transaction is reverted, and all remaining gas is consumed.
+    - **Return**: Returns "You are eligible to take admission" if the eligibility criteria are met.
+
+## Summary
+
+Each function in the `Admission` contract demonstrates a different method of error handling:
+
+- **`uniA`**: Uses `require` for precondition checks, reverting the transaction if the conditions are not met.
+- **`uniB`**: Uses `revert` for more complex condition checks, explicitly reverting the transaction if the conditions are met.
+- **`uniC`**: Uses `assert` for checking conditions that should never fail, consuming all remaining gas if the conditions are not met.
+
+These functions illustrate practical examples of how to use `require`, `revert`, and `assert` in Solidity for enforcing conditions and handling errors.
+
   
 
 ## 🌟 **Acknowledgement** 🌟
