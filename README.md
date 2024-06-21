@@ -8,15 +8,11 @@ This Solidity contract serves as a learning tool for beginners. It demonstrates 
 
 ## Contract Overview
 
-The `AgeChecker` contract includes the following functionality:
+The `Admission` contract includes the following functionality:
 
-- A `checkAgeRequire` function that verifies if the provided age is greater than 18 using the `require` statement.
-- A `checkAgeRevert` function that verifies if the provided age is greater than 18 using the `revert` statement.
-- A `checkAgeAssert` function that verifies if the provided age is greater than 18 using the `assert` statement.
-
-Each function returns `true` if the age check passes.
-
-Sure! Here's an explanation of error handling in Solidity, tailored to your `AgeChecker` contract:
+- A `uniA` function that checks if the provided Mathematics and Science marks are above certain thresholds using the `require` statement.
+- A `uniB` function that checks if the provided Mathematics and Science marks are above certain thresholds using the `revert` statement.
+- A `uniC` function that checks if the provided Mathematics and Science marks are above certain thresholds using the `assert` statement.
 
 ---
 
